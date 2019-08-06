@@ -1,0 +1,18 @@
+@import 'variables';
+.navbar-header {
+  height: 80px;
+  background: url(https://image.ibb.co/cmSKBR/shutterstock_241949968_copy.png) repeat top left;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.nav-link {
+  color: $grey;
+  font-weight: bolder;
+}
+
+form button{
+  background-color: $brown !important;
+  color: white !important;
+  border-color: white !important;
+}
