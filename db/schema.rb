@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_004833) do
+ActiveRecord::Schema.define(version: 2019_08_06_193825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,9 +52,16 @@ ActiveRecord::Schema.define(version: 2019_08_06_004833) do
     t.bigint "hop_id"
     t.bigint "yeast_id"
     t.bigint "note_id"
+    t.bigint "recipe_id"
+    t.bigint "mash_id"
+    t.string "original_type"
+    t.bigint "original_id"
     t.index ["ferment_id"], name: "index_brews_on_ferment_id"
     t.index ["hop_id"], name: "index_brews_on_hop_id"
+    t.index ["mash_id"], name: "index_brews_on_mash_id"
     t.index ["note_id"], name: "index_brews_on_note_id"
+    t.index ["original_type", "original_id"], name: "index_brews_on_original_type_and_original_id"
+    t.index ["recipe_id"], name: "index_brews_on_recipe_id"
     t.index ["user_id"], name: "index_brews_on_user_id"
     t.index ["yeast_id"], name: "index_brews_on_yeast_id"
   end
@@ -123,7 +130,9 @@ ActiveRecord::Schema.define(version: 2019_08_06_004833) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "brews", "ferments"
   add_foreign_key "brews", "hops"
+  add_foreign_key "brews", "mashes"
   add_foreign_key "brews", "notes"
+  add_foreign_key "brews", "recipes"
   add_foreign_key "brews", "users"
   add_foreign_key "brews", "yeasts"
 end
