@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @ferment.type %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ferment.name %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @ferment.weight %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @ferment.item %>
+</p>
+
+<p>
+  <strong>Time added:</strong>
+  <%= @ferment.time_added %>
+</p>
+
+<%= link_to 'Edit', edit_ferment_path(@ferment) %> |
+<%= link_to 'Back', ferments_path %>

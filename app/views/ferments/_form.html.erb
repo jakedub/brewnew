@@ -1,0 +1,44 @@
+<%= form_with(model: ferment, local: true) do |form| %>
+  <% if ferment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ferment.errors.count, "error") %> prohibited this ferment from being saved:</h2>
+
+      <ul>
+      <% ferment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ferments_type %>
+    <%= form.text_field :ferments_type, id: :ferments_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :ferment_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.number_field :weight, id: :ferment_weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :item %>
+    <%= form.text_field :item, id: :ferment_item %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_added %>
+    <%= form.text_field :time_added, id: :ferment_time_added %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to "Next", new_yeast_path %>

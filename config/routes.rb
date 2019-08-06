@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # resources :mashes
   # resources :yeasts
   # resources :hops
-  # resources :ferments
+  resources :ferments
   # resources :recipes
   # resources :users
   # resources :local_users
