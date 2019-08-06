@@ -9,3 +9,7 @@ config/google_analytics.yml
 public/assets/**
 development.log
 log/development.log
+public/packs
+/tmp/cache
+/node_modules
+/tmp
