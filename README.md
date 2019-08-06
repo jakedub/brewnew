@@ -6,7 +6,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
+ 2.6.0
 * System dependencies
 
 * Configuration
@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+Used:
+https://medium.com/@guilhermepejon/how-to-install-bootstrap-4-3-in-a-rails-6-app-using-webpack-9eae7a6e2832
