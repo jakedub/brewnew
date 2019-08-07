@@ -1,0 +1,29 @@
+<% if @note.errors.present? %>
+  <div class="alert alert danger">
+    <% @note.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        <%= form_with(model: @note, class: 'form form-horizontal', local: true) do |form| %>
+            <div class="form-group">
+            <%= form.label :title %>
+            <%= form.text_field :title, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+            <%= form.label :body %>
+            <%= form.rich_text_area :body %>
+            </div>
+
+            <div class="form-group">
+            <%= form.submit @note.persisted? ? "Update" : "Save", class: 'btn btn-success' %>
+            </div>
+        <% end %>
+        </div>
+    </div>
+</div>

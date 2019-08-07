@@ -4,6 +4,7 @@
 // that code so it'll be compiled.
 import '../stylesheets/application'
 import './bootstrap_custom.js'
+import "@rails/actiontext"
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
