@@ -1,0 +1,43 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+  // Jumbotron start
+@import 'variables';
+.jumbotron {
+  background: url(https://image.ibb.co/csJjBR/Argus_Tasting_Room3.png);
+  // background-color: red;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #dfdcd2;
+  font-family: 'Roboto', sans-serif;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  text-transform: full-width;
+}
+body {
+  background: url(https://image.ibb.co/fjd0d6/sample.jpg) no-repeat center center fixed;
+}
+
+h1.jumbotitle {
+  font-family: 'roboto slab', sans-serif;
+  text-transform: uppercase;
+  font-weight: lighter;
+  color: #dfdcd2;
+  text-rendering: optimizeLegibility;
+  text-align: center;
+}
+
+.form-signin {
+  background-color: $milk;
+  margin-bottom: 40px !important;
+  width:100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+  border-radius: 25px;
+}
+footer {
+  background-color: $grey;
+}
