@@ -20,10 +20,11 @@ Rails.application.routes.draw do
   post '/brews/:id/create' => 'brews#create_version', as: :create_version
 
   # authentication provider callbacks
-  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
-  match '/logout', to: 'sessions#destroy', via: [:get, :post, :delete]
+  # match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  match '/logout', to: 'sessions#destroy', via: [:destroy]
   # sessions
-  post '/login' => 'sessions#local_create', as: :login
   get '/brewmaster/new' => 'users#new'
   post '/brewmaster/new' => 'users#create'
   post '/search' => 'brews#search', as: :search
