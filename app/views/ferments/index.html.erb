@@ -1,39 +1,5 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-  <h1>Ferments</h1>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Name</th>
-          <th>Weight</th>
-          <th>Item</th>
-          <th>Time added</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @ferments.each do |ferment| %>
-          <tr>
-            <td><%= ferment.type %></td>
-            <td><%= ferment.name %></td>
-            <td><%= ferment.weight %></td>
-            <td><%= ferment.item %></td>
-            <td><%= ferment.time_added %></td>
-            <td><%= link_to 'Show', ferment %></td>
-            <td><%= link_to 'Edit', edit_ferment_path(ferment) %></td>
-            <td><%= link_to 'Destroy', ferment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <br>
-
-    <%= link_to 'New Ferment', new_ferment_path %>
+    <h1>Text</h1>
   </div>
 </div>
-
-
