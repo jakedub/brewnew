@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   match '/logout', to: 'sessions#destroy', via: [:get, :post, :delete]
   # sessions
   post '/login' => 'sessions#local_create', as: :login
-  get '/brewmaster/new' => 'local_users#new'
-  post '/brewmaster/new' => 'local_users#create'
+  get '/brewmaster/new' => 'users#new'
+  post '/brewmaster/new' => 'users#create'
   post '/search' => 'brews#search', as: :search
   post '/search/compare' => 'brews#search_for_compare', as: :search_compare
   get '/brews/:id/master' => 'brews#make_master', as: :make_master
