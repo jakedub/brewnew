@@ -1,3 +1,21 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'variables';
+.form-signin {
+  background-color: $milk;
+  margin-bottom: 40px !important;
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+  border-radius: 25px;
+  button {
+    color: red;
+    background-color: purple;
+  }
+}
+
+.form-label-group {
+  text-align: center;
+}

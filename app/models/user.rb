@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :brews
   has_many :authorizations
-  has_one :local_user
-
+  validates :first_name, :last_name, :email, :password, presence: true
+  validates :password, confirmation: { case_sensitive: true }
 end

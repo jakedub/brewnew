@@ -36,15 +36,7 @@
 //   text-align: center;
 // }
 
-.form-signin {
-  background-color: $milk;
-  margin-bottom: 40px !important;
-  width:100%;
-  max-width: 420px;
-  padding: 15px;
-  margin: auto;
-  border-radius: 25px;
-}
+
 footer {
   background-color: $grey;
   bottom: 0;
@@ -73,7 +65,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #fff;
+  background: url(https://image.ibb.co/fjd0d6/sample.jpg) no-repeat center center fixed;
 }
 
 body {
