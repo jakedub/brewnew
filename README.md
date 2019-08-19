@@ -23,6 +23,9 @@ Things you may want to cover:
 
 * ...
 
+* jQuery Rails 6
+https://www.botreetechnologies.com/blog/introducing-jquery-in-rails-6-using-webpacker
 
+* Bootstrap Rails 6
 Used:
 https://medium.com/@guilhermepejon/how-to-install-bootstrap-4-3-in-a-rails-6-app-using-webpack-9eae7a6e2832
