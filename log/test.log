@@ -1,0 +1,498 @@
+  [1m[35m (5.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (29.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (238.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "brewnew_test"[0m
+  [1m[35m (918.7ms)[0m  [1m[35mCREATE DATABASE "brewnew_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (124.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "action_text_rich_texts" CASCADE[0m
+  [1m[35m (146.2ms)[0m  [1m[35mCREATE TABLE "action_text_rich_texts" ("id" bigserial primary key, "name" character varying NOT NULL, "body" text, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_action_text_rich_texts_uniqueness" ON "action_text_rich_texts"  ("record_type", "record_id", "name")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "brews" CASCADE[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "brews" ("id" bigserial primary key, "user_id" bigint, "ferment_id" bigint, "hop_id" bigint, "yeast_id" bigint, "note_id" bigint, "recipe_id" bigint, "mash_id" bigint, "original_type" character varying, "original_id" bigint)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_ferment_id" ON "brews"  ("ferment_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_hop_id" ON "brews"  ("hop_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_mash_id" ON "brews"  ("mash_id")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_note_id" ON "brews"  ("note_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_original_type_and_original_id" ON "brews"  ("original_type", "original_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_recipe_id" ON "brews"  ("recipe_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_user_id" ON "brews"  ("user_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_yeast_id" ON "brews"  ("yeast_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "ferments" CASCADE[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "ferments" ("id" bigserial primary key, "type" character varying, "name" character varying, "weight" integer, "item" character varying, "time_added" timestamp)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "hops" CASCADE[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "hops" ("id" bigserial primary key, "amount" integer, "time" timestamp, "name" character varying, "hop_type" character varying, "use" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "mashes" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "mashes" ("id" bigserial primary key, "temperature" integer, "time" timestamp)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "measures" CASCADE[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "measures" ("id" bigserial primary key, "units" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "notes" CASCADE[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "title" character varying)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes" CASCADE[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" bigserial primary key, "name" character varying, "author" character varying, "brew_method" character varying, "batch_size" integer, "est_boil_size" integer, "original_gravity" integer, "final_gravity" integer, "abv" integer, "ibu" integer, "srn" integer, "brew_type" character varying, "brew_style" character varying, "boil_time" integer, "efficiency" integer, "storage_tpe" character varying, "status" boolean)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "yeasts" CASCADE[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "yeasts" ("id" bigserial primary key, "brand" character varying, "variety" character varying, "temperature" integer)[0m
+  [1m[35m (11.1ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (7.2ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_ccbb02fbe2"
+FOREIGN KEY ("ferment_id")
+  REFERENCES "ferments" ("id")
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_cc421dc8b2"
+FOREIGN KEY ("hop_id")
+  REFERENCES "hops" ("id")
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_d24158918f"
+FOREIGN KEY ("mash_id")
+  REFERENCES "mashes" ("id")
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_87179bf719"
+FOREIGN KEY ("note_id")
+  REFERENCES "notes" ("id")
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_5bf0d8801f"
+FOREIGN KEY ("recipe_id")
+  REFERENCES "recipes" ("id")
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_e864645f83"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_9bf44f6184"
+FOREIGN KEY ("yeast_id")
+  REFERENCES "yeasts" ("id")
+[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (29.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190807185606)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190806003931),
+(20190806004209),
+(20190806004331),
+(20190806004411),
+(20190806004450),
+(20190806004514),
+(20190806004630),
+(20190806004646),
+(20190806004647),
+(20190806004716),
+(20190806004833),
+(20190806193342),
+(20190806193732),
+(20190806193825),
+(20190807185322);
+
+[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2019-08-19 18:55:05.096894"], ["updated_at", "2019-08-19 18:55:05.096894"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1289.3ms)[0m  [1m[35mCREATE DATABASE "brewnew_test-0" ENCODING = 'unicode'[0m
+  [1m[35m (1295.9ms)[0m  [1m[35mCREATE DATABASE "brewnew_test-3" ENCODING = 'unicode'[0m
+  [1m[35m (1305.5ms)[0m  [1m[35mCREATE DATABASE "brewnew_test-2" ENCODING = 'unicode'[0m
+  [1m[35m (1309.9ms)[0m  [1m[35mCREATE DATABASE "brewnew_test-1" ENCODING = 'unicode'[0m
+  [1m[35mSQL (36.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "action_text_rich_texts" CASCADE[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "action_text_rich_texts" CASCADE[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "action_text_rich_texts" CASCADE[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "action_text_rich_texts" CASCADE[0m
+  [1m[35m (155.6ms)[0m  [1m[35mCREATE TABLE "action_text_rich_texts" ("id" bigserial primary key, "name" character varying NOT NULL, "body" text, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (160.3ms)[0m  [1m[35mCREATE TABLE "action_text_rich_texts" ("id" bigserial primary key, "name" character varying NOT NULL, "body" text, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_action_text_rich_texts_uniqueness" ON "action_text_rich_texts"  ("record_type", "record_id", "name")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (160.5ms)[0m  [1m[35mCREATE TABLE "action_text_rich_texts" ("id" bigserial primary key, "name" character varying NOT NULL, "body" text, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_action_text_rich_texts_uniqueness" ON "action_text_rich_texts"  ("record_type", "record_id", "name")[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_action_text_rich_texts_uniqueness" ON "action_text_rich_texts"  ("record_type", "record_id", "name")[0m
+  [1m[35m (168.3ms)[0m  [1m[35mCREATE TABLE "action_text_rich_texts" ("id" bigserial primary key, "name" character varying NOT NULL, "body" text, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_action_text_rich_texts_uniqueness" ON "action_text_rich_texts"  ("record_type", "record_id", "name")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "brews" CASCADE[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "brews" ("id" bigserial primary key, "user_id" bigint, "ferment_id" bigint, "hop_id" bigint, "yeast_id" bigint, "note_id" bigint, "recipe_id" bigint, "mash_id" bigint, "original_type" character varying, "original_id" bigint)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "brews" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_ferment_id" ON "brews"  ("ferment_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "brews" CASCADE[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_hop_id" ON "brews"  ("hop_id")[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "brews" ("id" bigserial primary key, "user_id" bigint, "ferment_id" bigint, "hop_id" bigint, "yeast_id" bigint, "note_id" bigint, "recipe_id" bigint, "mash_id" bigint, "original_type" character varying, "original_id" bigint)[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_mash_id" ON "brews"  ("mash_id")[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "brews" ("id" bigserial primary key, "user_id" bigint, "ferment_id" bigint, "hop_id" bigint, "yeast_id" bigint, "note_id" bigint, "recipe_id" bigint, "mash_id" bigint, "original_type" character varying, "original_id" bigint)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_ferment_id" ON "brews"  ("ferment_id")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "brews" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_ferment_id" ON "brews"  ("ferment_id")[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_hop_id" ON "brews"  ("hop_id")[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_note_id" ON "brews"  ("note_id")[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_mash_id" ON "brews"  ("mash_id")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_hop_id" ON "brews"  ("hop_id")[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "brews" ("id" bigserial primary key, "user_id" bigint, "ferment_id" bigint, "hop_id" bigint, "yeast_id" bigint, "note_id" bigint, "recipe_id" bigint, "mash_id" bigint, "original_type" character varying, "original_id" bigint)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_original_type_and_original_id" ON "brews"  ("original_type", "original_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_mash_id" ON "brews"  ("mash_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_ferment_id" ON "brews"  ("ferment_id")[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_recipe_id" ON "brews"  ("recipe_id")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_note_id" ON "brews"  ("note_id")[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_note_id" ON "brews"  ("note_id")[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_hop_id" ON "brews"  ("hop_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_user_id" ON "brews"  ("user_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_original_type_and_original_id" ON "brews"  ("original_type", "original_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_original_type_and_original_id" ON "brews"  ("original_type", "original_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_yeast_id" ON "brews"  ("yeast_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_mash_id" ON "brews"  ("mash_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_recipe_id" ON "brews"  ("recipe_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "ferments" CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_user_id" ON "brews"  ("user_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_recipe_id" ON "brews"  ("recipe_id")[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_note_id" ON "brews"  ("note_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_yeast_id" ON "brews"  ("yeast_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_user_id" ON "brews"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ferments" CASCADE[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "ferments" ("id" bigserial primary key, "type" character varying, "name" character varying, "weight" integer, "item" character varying, "time_added" timestamp)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_original_type_and_original_id" ON "brews"  ("original_type", "original_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "hops" CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_yeast_id" ON "brews"  ("yeast_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "ferments" CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_recipe_id" ON "brews"  ("recipe_id")[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "ferments" ("id" bigserial primary key, "type" character varying, "name" character varying, "weight" integer, "item" character varying, "time_added" timestamp)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "hops" CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_user_id" ON "brews"  ("user_id")[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "hops" ("id" bigserial primary key, "amount" integer, "time" timestamp, "name" character varying, "hop_type" character varying, "use" character varying)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "mashes" CASCADE[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE "ferments" ("id" bigserial primary key, "type" character varying, "name" character varying, "weight" integer, "item" character varying, "time_added" timestamp)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE  INDEX  "index_brews_on_yeast_id" ON "brews"  ("yeast_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "ferments" CASCADE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "hops" CASCADE[0m
+  [1m[35m (15.2ms)[0m  [1m[35mCREATE TABLE "mashes" ("id" bigserial primary key, "temperature" integer, "time" timestamp)[0m
+  [1m[35m (17.0ms)[0m  [1m[35mCREATE TABLE "hops" ("id" bigserial primary key, "amount" integer, "time" timestamp, "name" character varying, "hop_type" character varying, "use" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "measures" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "mashes" CASCADE[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE "ferments" ("id" bigserial primary key, "type" character varying, "name" character varying, "weight" integer, "item" character varying, "time_added" timestamp)[0m
+  [1m[35m (16.3ms)[0m  [1m[35mCREATE TABLE "hops" ("id" bigserial primary key, "amount" integer, "time" timestamp, "name" character varying, "hop_type" character varying, "use" character varying)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "hops" CASCADE[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "mashes" CASCADE[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "mashes" ("id" bigserial primary key, "temperature" integer, "time" timestamp)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "measures" CASCADE[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "measures" ("id" bigserial primary key, "units" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "notes" CASCADE[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "mashes" ("id" bigserial primary key, "temperature" integer, "time" timestamp)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "measures" CASCADE[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "hops" ("id" bigserial primary key, "amount" integer, "time" timestamp, "name" character varying, "hop_type" character varying, "use" character varying)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "mashes" CASCADE[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "measures" ("id" bigserial primary key, "units" character varying)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "notes" CASCADE[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "title" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes" CASCADE[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "mashes" ("id" bigserial primary key, "temperature" integer, "time" timestamp)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "measures" CASCADE[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "measures" ("id" bigserial primary key, "units" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "notes" CASCADE[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "title" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes" CASCADE[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "measures" ("id" bigserial primary key, "units" character varying)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "notes" CASCADE[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" bigserial primary key, "name" character varying, "author" character varying, "brew_method" character varying, "batch_size" integer, "est_boil_size" integer, "original_gravity" integer, "final_gravity" integer, "abv" integer, "ibu" integer, "srn" integer, "brew_type" character varying, "brew_style" character varying, "boil_time" integer, "efficiency" integer, "storage_tpe" character varying, "status" boolean)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "title" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" bigserial primary key, "name" character varying, "author" character varying, "brew_method" character varying, "batch_size" integer, "est_boil_size" integer, "original_gravity" integer, "final_gravity" integer, "abv" integer, "ibu" integer, "srn" integer, "brew_type" character varying, "brew_style" character varying, "boil_time" integer, "efficiency" integer, "storage_tpe" character varying, "status" boolean)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "notes" ("id" bigserial primary key, "title" character varying)[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password" character varying)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes" CASCADE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "yeasts" CASCADE[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" bigserial primary key, "name" character varying, "author" character varying, "brew_method" character varying, "batch_size" integer, "est_boil_size" integer, "original_gravity" integer, "final_gravity" integer, "abv" integer, "ibu" integer, "srn" integer, "brew_type" character varying, "brew_style" character varying, "boil_time" integer, "efficiency" integer, "storage_tpe" character varying, "status" boolean)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "yeasts" CASCADE[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" bigserial primary key, "name" character varying, "author" character varying, "brew_method" character varying, "batch_size" integer, "est_boil_size" integer, "original_gravity" integer, "final_gravity" integer, "abv" integer, "ibu" integer, "srn" integer, "brew_type" character varying, "brew_style" character varying, "boil_time" integer, "efficiency" integer, "storage_tpe" character varying, "status" boolean)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "yeasts" ("id" bigserial primary key, "brand" character varying, "variety" character varying, "temperature" integer)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "yeasts" CASCADE[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "yeasts" ("id" bigserial primary key, "brand" character varying, "variety" character varying, "temperature" integer)[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "yeasts" CASCADE[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "yeasts" ("id" bigserial primary key, "brand" character varying, "variety" character varying, "temperature" integer)[0m
+  [1m[35m (11.7ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "yeasts" ("id" bigserial primary key, "brand" character varying, "variety" character varying, "temperature" integer)[0m
+  [1m[35m (12.8ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (10.9ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (12.4ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_ccbb02fbe2"
+FOREIGN KEY ("ferment_id")
+  REFERENCES "ferments" ("id")
+[0m
+  [1m[35m (11.4ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_cc421dc8b2"
+FOREIGN KEY ("hop_id")
+  REFERENCES "hops" ("id")
+[0m
+  [1m[35m (12.4ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_ccbb02fbe2"
+FOREIGN KEY ("ferment_id")
+  REFERENCES "ferments" ("id")
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_d24158918f"
+FOREIGN KEY ("mash_id")
+  REFERENCES "mashes" ("id")
+[0m
+  [1m[35m (12.5ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_ccbb02fbe2"
+FOREIGN KEY ("ferment_id")
+  REFERENCES "ferments" ("id")
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_cc421dc8b2"
+FOREIGN KEY ("hop_id")
+  REFERENCES "hops" ("id")
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_87179bf719"
+FOREIGN KEY ("note_id")
+  REFERENCES "notes" ("id")
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_cc421dc8b2"
+FOREIGN KEY ("hop_id")
+  REFERENCES "hops" ("id")
+[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_d24158918f"
+FOREIGN KEY ("mash_id")
+  REFERENCES "mashes" ("id")
+[0m
+  [1m[35m (12.7ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_ccbb02fbe2"
+FOREIGN KEY ("ferment_id")
+  REFERENCES "ferments" ("id")
+[0m
+  [1m[35m (3.6ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_5bf0d8801f"
+FOREIGN KEY ("recipe_id")
+  REFERENCES "recipes" ("id")
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_d24158918f"
+FOREIGN KEY ("mash_id")
+  REFERENCES "mashes" ("id")
+[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_87179bf719"
+FOREIGN KEY ("note_id")
+  REFERENCES "notes" ("id")
+[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_e864645f83"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_cc421dc8b2"
+FOREIGN KEY ("hop_id")
+  REFERENCES "hops" ("id")
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_87179bf719"
+FOREIGN KEY ("note_id")
+  REFERENCES "notes" ("id")
+[0m
+  [1m[35m (3.8ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_5bf0d8801f"
+FOREIGN KEY ("recipe_id")
+  REFERENCES "recipes" ("id")
+[0m
+  [1m[35m (3.8ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_d24158918f"
+FOREIGN KEY ("mash_id")
+  REFERENCES "mashes" ("id")
+[0m
+  [1m[35m (3.6ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_5bf0d8801f"
+FOREIGN KEY ("recipe_id")
+  REFERENCES "recipes" ("id")
+[0m
+  [1m[35m (4.0ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_e864645f83"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_87179bf719"
+FOREIGN KEY ("note_id")
+  REFERENCES "notes" ("id")
+[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_e864645f83"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_5bf0d8801f"
+FOREIGN KEY ("recipe_id")
+  REFERENCES "recipes" ("id")
+[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_e864645f83"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_9bf44f6184"
+FOREIGN KEY ("yeast_id")
+  REFERENCES "yeasts" ("id")
+[0m
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_9bf44f6184"
+FOREIGN KEY ("yeast_id")
+  REFERENCES "yeasts" ("id")
+[0m
+  [1m[35m (3.5ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_9bf44f6184"
+FOREIGN KEY ("yeast_id")
+  REFERENCES "yeasts" ("id")
+[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE "brews" ADD CONSTRAINT "fk_rails_9bf44f6184"
+FOREIGN KEY ("yeast_id")
+  REFERENCES "yeasts" ("id")
+[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190807185606)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190807185606)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190807185606)[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190806003931),
+(20190806004209),
+(20190806004331),
+(20190806004411),
+(20190806004450),
+(20190806004514),
+(20190806004630),
+(20190806004646),
+(20190806004647),
+(20190806004716),
+(20190806004833),
+(20190806193342),
+(20190806193732),
+(20190806193825),
+(20190807185322);
+
+[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190806003931),
+(20190806004209),
+(20190806004331),
+(20190806004411),
+(20190806004450),
+(20190806004514),
+(20190806004630),
+(20190806004646),
+(20190806004647),
+(20190806004716),
+(20190806004833),
+(20190806193342),
+(20190806193732),
+(20190806193825),
+(20190807185322);
+
+[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190806003931),
+(20190806004209),
+(20190806004331),
+(20190806004411),
+(20190806004450),
+(20190806004514),
+(20190806004630),
+(20190806004646),
+(20190806004647),
+(20190806004716),
+(20190806004833),
+(20190806193342),
+(20190806193732),
+(20190806193825),
+(20190807185322);
+
+[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190807185606)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190806003931),
+(20190806004209),
+(20190806004331),
+(20190806004411),
+(20190806004450),
+(20190806004514),
+(20190806004630),
+(20190806004646),
+(20190806004647),
+(20190806004716),
+(20190806004833),
+(20190806193342),
+(20190806193732),
+(20190806193825),
+(20190807185322);
+
+[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2019-08-19 18:55:07.549035"], ["updated_at", "2019-08-19 18:55:07.549035"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2019-08-19 18:55:07.548990"], ["updated_at", "2019-08-19 18:55:07.548990"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2019-08-19 18:55:07.549725"], ["updated_at", "2019-08-19 18:55:07.549725"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2019-08-19 18:55:07.554732"], ["updated_at", "2019-08-19 18:55:07.554732"]]
+  [1m[35m (40.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (689.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "brewnew_test-2"[0m
+  [1m[35m (664.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "brewnew_test-3"[0m
+  [1m[35m (665.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "brewnew_test-1"[0m
+  [1m[35m (227.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "brewnew_test-0"[0m

@@ -12,7 +12,9 @@
 
   <body>
     <%= render partial: 'layouts/nav' unless current_page?(root_path)%>
-    <%= yield %>
+    <div class="wrapper">
+      <%= yield %>
+    </div>
     <%= render partial: 'layouts/footer' unless current_page?(root_path)%>
   </body>
 </html>

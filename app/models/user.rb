@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_accessor :password
   before_save { self.email = email.downcase }
   has_many :brews
   has_many :authorizations
@@ -8,6 +9,10 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
-  validates :password, confirmation: { case_sensitive: true }
   has_secure_password
+
+  def full_name
+    [first_name, last_name].join(' ')
+  end
+
 end

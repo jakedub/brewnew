@@ -27,11 +27,13 @@ Rails.application.routes.draw do
   # sessions
   get '/brewmaster/new' => 'users#new'
   post '/brewmaster/new' => 'users#create'
+  get '/brewmaster/:id' => 'users#show', as: :brewmaster_show
   post '/search' => 'brews#search', as: :search
   post '/search/compare' => 'brews#search_for_compare', as: :search_compare
   get '/brews/:id/master' => 'brews#make_master', as: :make_master
   get '/brews/:id/tree' => 'brews#ancestry_tree', as: :ancestry
   get '/home' => 'brews#home', as: :home
+  get '/about' => 'home#about'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,23 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @users = User.all
+  def show
   end
 
   def new
     @user = User.new
   end
 
-  def show
-  end
-
   def create
     @user = User.new(user_params)
+    binding.pry
     if @user.save
       log_in @user
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to login_path
+      redirect_to @user
     else
       render 'new'
     end
@@ -37,6 +34,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:users).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+      params.require(:users).permit(:first_name, :last_name, :email, :password)
     end
 end
