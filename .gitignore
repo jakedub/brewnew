@@ -12,3 +12,13 @@ log/development.log
 public/packs
 /tmp/cache
 /node_modules
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+node_modules
+/node_modules/*
+tmp/cache
