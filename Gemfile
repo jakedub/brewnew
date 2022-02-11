@@ -8,7 +8,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 gem 'sass-rails', '~> 5'
 gem 'turbolinks', '~> 5'
 gem 'uglifier'
